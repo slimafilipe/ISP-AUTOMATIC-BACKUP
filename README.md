@@ -10,6 +10,7 @@ Este projeto surgiu como iniciativa para facilitar o meu dia-a-dia na administra
 * **Java 25** (Asynchronous Connection Pools & Virtual Threads)
 * **Spring Boot 3.x** (Web, Data JPA)
 * **H2 Database** (Ambiente de Desenvolvimento/Testes)
+* **PostgreSQL** (Ambiente de Produção)
 * **JGit** (Integração nativa com o protocolo Git via Java)
 * **Lombok** (Produtividade e código limpo)
 
