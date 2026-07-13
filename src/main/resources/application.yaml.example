@@ -1,0 +1,57 @@
+spring:
+  # Ambiente Ativo Padrão: 'dev' usa H2. Altere para 'prod' para usar o banco de produção.
+  profiles:
+    active: dev
+
+---
+# -------------------------------------------------------------------
+# PERFIL DE DESENVOLVIMENTO / TESTES (H2 em Memória)
+# -------------------------------------------------------------------
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+# -------------------------------------------------------------------
+# PERFIL DE PRODUÇÃO
+# Substitua as propriedades abaixo de acordo com o banco da sua infraestrutura
+# -------------------------------------------------------------------
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://<IP_DO_SERVIDOR>:<PORTA>/<NOME_DO_BANCO>
+    driver-class-name: org.postgresql.Driver
+    username: SEU_USUARIO_DO_BANCO_PROD
+    password: SUA_SENHA_DO_BANCO_PROD
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+---
+# -------------------------------------------------------------------
+#GITHUB & GIT
+# -------------------------------------------------------------------
+github:
+  author: "SEU_AUTHOR"
+  email: "SEU@EMAIL"
+  url: "https://SEU_REPOSITORIO.git"
+  token: "ghp_SEU_TOKEN"
