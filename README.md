@@ -1,6 +1,7 @@
 # ISP-AUTOMATIC-BACKUP
 
-Este é um serviço automatizado desenvolvido em Spring Boot responsável por realizar o backup de configurações de gerência de OLTs da fabricante **Think**, centralizando e versionando os arquivos binários (`.bin`) de forma segura em um repositório privado do **GitHub**.
+Serviço automatizado desenvolvido em Spring Boot responsável por realizar o backup de configurações de gerência de OLTs da fabricante **Think**, centralizando e versionando os arquivos binários (`.bin`) de forma segura em um repositório privado do **GitHub**.
+Este projeto surgiu como iniciativa para facilitar o meu dia-a-dia na administração da infraestrutura de rede do ISP onde trabalho. 
 
 ---
 
