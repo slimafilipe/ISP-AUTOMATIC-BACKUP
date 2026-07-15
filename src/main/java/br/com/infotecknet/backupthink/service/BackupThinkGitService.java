@@ -17,10 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
@@ -81,6 +78,26 @@ public class BackupThinkGitService {
             System.err.println("CAUSA REAL DO JGIT: " + cause.getMessage());
             cause.printStackTrace();
             throw new RuntimeException("Erro a processar backup individual" + e.getMessage());
+        }
+    }
+
+    public File getBackupFromGit(Long id) {
+        OLTModel olt = oltRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("OLT não encontrada com id: " + id));
+        try(Git git = initializeRepoGit()) {
+            UsernamePasswordCredentialsProvider credentialsProvider =
+                    new UsernamePasswordCredentialsProvider("oauth2", githubToken);
+            git.pull().setCredentialsProvider(credentialsProvider).call();
+
+            String pathOlt = localRepoDir + olt.getIpOlt().replace(".", "_") + "/";
+            File file = new File(pathOlt + olt.getNameOLT() + "_backup_config.bin");
+
+            if (!file.exists()) {
+                throw new FileNotFoundException("Arquivo de backup não encontrado no repositorio");
+            }
+            return file;
+        } catch (Exception e) {
+           throw new RuntimeException("Erro ao recuperar backup: " + e.getMessage());
         }
     }
 
