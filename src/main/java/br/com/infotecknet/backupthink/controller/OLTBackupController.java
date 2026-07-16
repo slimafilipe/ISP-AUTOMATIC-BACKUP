@@ -13,13 +13,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/olts")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class OLTBackupController {
     private final OLTRepository oltRepository;
     private final BackupThinkGitService backupService;
+
+    @GetMapping
+    public List<OLTModel> getAllOLTs() {
+        return oltRepository.findAll();
+    }
 
     @GetMapping("/{id}/download-git")
     public ResponseEntity<Resource> downloadFromGit(@PathVariable Long id) {

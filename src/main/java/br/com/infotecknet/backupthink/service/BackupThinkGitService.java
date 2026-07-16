@@ -89,7 +89,7 @@ public class BackupThinkGitService {
                     new UsernamePasswordCredentialsProvider("oauth2", githubToken);
             git.pull().setCredentialsProvider(credentialsProvider).call();
 
-            String pathOlt = localRepoDir + olt.getIpOlt().replace(".", "_") + "/";
+            String pathOlt = localRepoDir + "olts/" + olt.getIpOlt().replace(".", "_") + "/";
             File file = new File(pathOlt + olt.getNameOLT() + "_backup_config.bin");
 
             if (!file.exists()) {
