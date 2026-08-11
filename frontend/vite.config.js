@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   build: {
     outDir: process.env.VITE_BUILD_OUTDIR === 'spring'
-      ? path.resolve(__dirname, '../src/main/resources/static')
+      ? path.resolve(import.meta.dirname, '../src/main/resources/static')
       : 'dist',
     emptyOutDir: true,
   },
