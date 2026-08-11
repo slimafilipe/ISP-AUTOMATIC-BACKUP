@@ -1,0 +1,22 @@
+name: Deploy Vm-linux
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Inject .env from secrets
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+
+      - name: Deploy app
+        run: |
+          docker compose up -d --build --force-recreate
+          docker image prune -f
