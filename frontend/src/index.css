@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Color */
+  --bg:             #000000;
+  --surface:        #111315;
+  --surface-raised: #18191b;
+  --border:         #303236;
+  --text:           #ffffff;
+  --text-muted:     #888888;
+  --accent:         #285d49;
+  --accent-hover:   #336b56;
+  --accent-subtle:  rgba(40, 93, 73, 0.12);
+  --accent-border:  rgba(40, 93, 73, 0.3);
+
+  /* State colors */
+  --state-success:        #34c78a;
+  --state-success-bg:     rgba(52, 199, 138, 0.08);
+  --state-success-border: rgba(52, 199, 138, 0.2);
+  --state-error:          #e05252;
+  --state-error-bg:       rgba(224, 82, 82, 0.08);
+  --state-error-border:   rgba(224, 82, 82, 0.2);
+  --state-loading:        #c9a227;
+  --state-loading-bg:     rgba(201, 162, 39, 0.08);
+  --state-loading-border: rgba(201, 162, 39, 0.2);
+  --state-idle:           #555b66;
+  --state-idle-bg:        rgba(85, 91, 102, 0.1);
+  --state-idle-border:    rgba(85, 91, 102, 0.2);
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+
+  /* Spacing (4px base) */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  28px;
+  --sp-8:  32px;
+  --sp-9:  36px;
+  --sp-10: 44px;
+
+  /* Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-pill: 9999px;
+
+  /* Shadows / borders */
+  --shadow-card: 0 0 0 1px var(--border);
+
+  /* Motion */
+  --dur-fast:  150ms;
+  --dur-base:  200ms;
+  --dur-slow:  300ms;
+  --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5060;
+}
+
+/* ─── Focus visible ──────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Reduced motion ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
